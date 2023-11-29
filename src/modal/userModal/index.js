@@ -10,7 +10,11 @@ const userSchema = new mongoose.Schema({
           type: String,
           require: true,
      },
-     role: {
+     role: {        
+          type: String,
+          require: true
+     },
+     img: {
           type: String,
           require: true
      }

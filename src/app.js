@@ -9,14 +9,20 @@ const port = process.env.PORT || 5000;
 
 
 const userDataCreate = require("./route/setUser/index")
+const classDataSave = require("./route/postClass/index.js")
+const teacherRequest = require("./route/teacherRequest/teacherRequest.js")
 
 
 applyMiddleware(app)
 
 
-
+app.use((req, res, next) => {
+  console.log(req.url)
+  next();
+})
 app.use(userDataCreate);
-
+app.use(classDataSave)
+app.use(teacherRequest)
 
 
 app.get("/", (req, res) => {
