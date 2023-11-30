@@ -5,6 +5,7 @@ const findOneEmail = async (req, res) => {
   try {
     const email = req.params.email;
     const find = await classDataAdded.find({email: email });
+    console.log(find)
 
     if (find) {
       res.status(200).json({ success: true, data: find });

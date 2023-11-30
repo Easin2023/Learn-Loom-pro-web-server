@@ -18,9 +18,9 @@ route.get('/allPaymentData', async (req, res) => {
 route.get('/getPaymentData/:email', async (req, res) => {
      try{
           const email = req.params.email;
-          const find = await paymentDB.findOne(email);
+          const findData = await paymentDB.findOne(email);
           if(find){
-               res.send({success: true, data: find})
+               res.send({success: true, data: findData})
           }else{
                res.send({success: false, data: "not found"})
           }
