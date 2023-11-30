@@ -3,6 +3,18 @@ const paymentDB = require('../modal/PaymentDataModal');
 var route = exports.Router();
 
 
+route.get('/allPaymentData', async (req, res) => {
+     try {
+          const allPayment = await paymentDB.find();
+          console.log(allPayment)
+      
+          res.status(200).json({ success: true, payment: allPayment });
+        } catch (error) {
+          console.error("Error getting all sites:", error);
+          res.status(500).json({ success: false, error: "Internal Server Error" });
+        }
+})
+
 route.get('/getPaymentData/:email', async (req, res) => {
      try{
           const email = req.params.email;
