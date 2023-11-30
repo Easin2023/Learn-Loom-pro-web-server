@@ -1,12 +1,10 @@
 const requestCollection = require("../../modal/teacherModal");
 
-const update = async (req, res) => {
+const requestApproved = async (req, res) => {
      try {
-          const id = req.params.id;
-          console.log(itemId);
-          const newData = req.body; 
-          console.log(newData)
-          const updatedItem = await requestCollection.findByIdAndUpdate(id, {$set: {"status": newData}}, { new: true });
+          const email = req.params.email;
+
+          const updatedItem = await requestCollection.findOneAndUpdate({email: email}, {$set: {"status": "approved"}}, { new: true });
       
           if (updatedItem) {
             res.status(200).json({ success: true, updatedItem });
@@ -19,4 +17,4 @@ const update = async (req, res) => {
         }
 }
 
-module.exports = update;
+module.exports = requestApproved;

@@ -3,12 +3,11 @@ const user = require("../modal/userModal");
 
 const updateMakeAdmin = async (req, res) => {
   try {
-    const id = req.params.id;
+    const email = req.params.email;
 
-    console.log(id)
 
-    const updateAdmin = await user.findByIdAndUpdate(
-      id,
+    const updateAdmin = await user.findOneAndUpdate(
+      {email: email},
       { $set: { role: "admin" } },
       { new: true }
     );

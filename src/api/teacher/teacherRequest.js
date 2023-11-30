@@ -8,6 +8,7 @@ const teacherRequestData = async (req, res) => {
               email: req.body.email,
               laval: req.body.laval,
               image: req.body.image,
+              status: req.body.status,
               category: req.body.category
           });
   

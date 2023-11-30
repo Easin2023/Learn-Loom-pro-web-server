@@ -3,8 +3,8 @@ const classDataAdded = require("../../modal/postClass");
 
 const findOneEmail = async (req, res) => {
   try {
-    const email = req?.params?.email;
-    const find = await classDataAdded.findOne({email: email });
+    const email = req.params.email;
+    const find = await classDataAdded.find({email: email });
 
     if (find) {
       res.status(200).json({ success: true, data: find });

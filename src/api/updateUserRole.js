@@ -1,12 +1,12 @@
 const user = require("../modal/userModal");
 
-const userMakeUpdate = async (req, res) => {
+const userMakeAdmin = async (req, res) => {
   try {
     const email = req.params.email;
 
     const update = await user.findOneAndUpdate(
       { email: email },
-      { $set: { role: "admin" } },
+      { $set: {"role": "teacher"} },
       { new: true }
     );
     if (update) {
@@ -19,4 +19,4 @@ const userMakeUpdate = async (req, res) => {
   }
 };
 
-module.exports = userMakeUpdate;
+module.exports = userMakeAdmin;
