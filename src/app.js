@@ -13,6 +13,8 @@ const userDataCreate = require("./route/setUser/index")
 const classDataSave = require("./route/postClass/index.js")
 const teacherRequest = require("./route/teacherRequest/teacherRequest.js")
 const payment = require("./route/payment.js")
+const paymentPost = require("./route/PaymentdataPost.js")
+
 
 
 applyMiddleware(app)
@@ -23,6 +25,7 @@ app.use((req, res, next) => {
   next();
 })
 app.use(userDataCreate);
+app.use(paymentPost);
 app.use(classDataSave)
 app.use(teacherRequest)
 app.use(payment)
@@ -45,11 +48,13 @@ app.use((err, req, res, next) => {
   });
 });
 
-const main = async () => {
-  await connectDB()
-  app.listen(port, () => {
-    console.log(`server is running ${port}`);
-  });
-}
+// const main = async () => {
+//   await connectDB()
+//   app.listen(port, () => {
+//     console.log(`server is running ${port}`);
+//   });
+// }
 
-main();
+// main();
+
+module.exports = app
